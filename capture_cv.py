@@ -1,3 +1,4 @@
+import time
 import cv2
 import sys
 
@@ -10,9 +11,10 @@ def capture_user(name):
 		ret, frame = cap.read()
 		rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2BGRA)
 		cv2.imshow('frame', rgb)
-		filename = "./Data/" + name + "/" + name + str(i) + ".jpg"
+		filename = "./Data/Raw/" + name + "/" + name + str(i) + ".jpg"
 		print("Saving image" + filename)
-		out = cv2.imwrite(filename, frame)
+                out = cv2.imwrite(filename, frame)
+                time.sleep(0.2)
 
 	cap.release()
 	cv2.destroyAllWindows()
@@ -20,8 +22,8 @@ def capture_user(name):
 
 
 if __name__ == "__main__":
-	
+
 	name = sys.argv[1]
-	
-	capture_user(name)	
+
+	capture_user(name)
 
